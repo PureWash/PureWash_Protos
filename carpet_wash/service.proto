@@ -1,0 +1,35 @@
+syntax="proto3";
+
+option  go_package="genproto/pure_wash";
+package carpet_wash_service;
+import  "carpet_wash_common.proto";
+import "google/protobuf/empty.proto";
+
+
+message  Service {
+  string  id=1;
+  string  traffic=2;
+  string company_id=3;
+  string  name=4;
+  string  description =5;
+  string  price=6;
+}
+message  ServiceRequest{
+  string  traffic=1;
+  string company_id=2;
+  string  name=3;
+  string  description =4;
+  string  price=5;
+}
+message  ServicesResponse{
+  repeated  Service services=1;
+  int64  count=2;
+}
+service  ServiceService {
+  rpc  CreateService(ServiceRequest)returns(Service);
+  rpc UpdateService(Service)returns(Service);
+  rpc DeleteService(PrimaryKey)returns(google.protobuf.Empty);
+  rpc GetService(PrimaryKey)returns(Service);
+  rpc GetAllService(GetListRequest)returns(ServicesResponse);
+
+}
