@@ -24,11 +24,11 @@ message  AddressesResponse{
   repeated  Address addresses=1;
   int64  count=2;
 }
-service  OrderService {
-  rpc  CreateAddress(AddressRequest)returns(Address);
+service  Addresses {
+  rpc CreateAddress(AddressRequest)returns(Address);
   rpc UpdateAddress(Address)returns(Address);
   rpc DeleteAddress(PrimaryKey)returns(google.protobuf.Empty);
   rpc GetAddress(PrimaryKey)returns(Address);
-  rpc GetAllAddresses(GetListRequest)returns(AddressesResponse);
+  // rpc GetAllAddresses(GetListRequest)returns(AddressesResponse);
 
 }

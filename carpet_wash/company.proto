@@ -28,6 +28,6 @@ service  CompanyService {
   rpc UpdateCompany(Company)returns(Company);
   rpc DeleteCompany(PrimaryKey)returns(google.protobuf.Empty);
   rpc GetCompany(PrimaryKey)returns(Company);
-  rpc GetAllCompany(GetListRequest)returns(CompaniesResponse);
+  // rpc GetAllCompany(GetListRequest)returns(CompaniesResponse);
 
 }
