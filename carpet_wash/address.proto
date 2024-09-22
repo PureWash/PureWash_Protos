@@ -10,19 +10,18 @@ import "google/protobuf/empty.proto";
 message  Address {
   string  id=1;
   string  user_id=2;
-  string latitude=3;
+  string  latitude=3;
   string  longitude =4;
   string  created_at =5;
   string  updated_at=6;
 }
 message  AddressRequest{
   string  user_id=1;
-  string latitude=2;
+  string  latitude=2;
   string  longitude =3;
 }
 message  AddressesResponse{
   repeated  Address addresses=1;
-  int64  count=2;
 }
 service  Addresses {
   rpc CreateAddress(AddressRequest)returns(Address);

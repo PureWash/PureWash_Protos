@@ -8,7 +8,7 @@ import "google/protobuf/empty.proto";
 message  Order {
   string  id=1;
   string  user_id=2;
-  string service_id=3;
+  string  service_id=3;
   string  address_id=4;
   string  created_at =5;
 }
@@ -22,7 +22,7 @@ message  OrdersResponse{
   int64  count=2;
 }
 service  OrderService {
-  rpc  CreateOrder(OrderRequest)returns(Order);
+  rpc CreateOrder(OrderRequest)returns(Order);
   rpc UpdateOrder(Order)returns(Order);
   rpc DeleteOrder(PrimaryKey)returns(google.protobuf.Empty);
   rpc GetOrder(PrimaryKey)returns(Order);
