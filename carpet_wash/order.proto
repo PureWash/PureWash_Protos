@@ -9,13 +9,19 @@ message  Order {
   string  id=1;
   string  user_id=2;
   string  service_id=3;
-  string  address_id=4;
-  string  created_at =5;
+  float   area=4;
+  float   total_price=5;
+  string  status=6;
+  string  address_id=7;
+  string  created_at =8;
 }
 message  OrderRequest{
-  string  user_id=1;
+  string user_id=1;
   string service_id=2;
-  string  address_id=3;
+  string address_id=3;
+  float area=4;
+  float total_price=5;
+  string status=6;
 }
 message  OrdersResponse{
   repeated  Order orders=1;
