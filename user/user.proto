@@ -1,6 +1,6 @@
 syntax="proto3";
 
-option  go_package="genproto/pure_wash";
+option  go_package="genproto/user";
 import  "user_common.proto";
 import  "google/protobuf/empty.proto";
 package user_service;
