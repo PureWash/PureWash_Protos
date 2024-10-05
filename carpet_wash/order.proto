@@ -1,22 +1,32 @@
 syntax="proto3";
 
-option  go_package="genproto/pure_wash";
+option go_package="genproto/pure_wash";
 package carpet_wash_service;
-import  "carpet_wash_common.proto";
+
+import "carpet_wash_common.proto";
 import "google/protobuf/empty.proto";
 
-message  CreateOrderReq{
-  string user_id=1;
+service OrderService {
+  rpc CreateOrder(CreateOrderReq) returns (CreateOrderResp){}
+  rpc UpdateOrder(UpdateOrderReq) returns (UpdateOrderResp){}
+  rpc DeleteOrder(PrimaryKey) returns (google.protobuf.Empty){}
+  rpc GetOrder(PrimaryKey) returns (GetOrderResp){}
+  rpc GetAllOrderForCurier(GetListRequest) returns (GetListOrdersResp){}
+  rpc GetAllOrder(GetListRequest) returns (GetListOrdersResp){}
+}
+
+message CreateOrderReq {
+  string user_id = 1;
   Client client = 2;
-  string service_id=3;
-  float area=4;
-  float total_price=5;
+  string service_id = 3;
+  float area = 4;
+  float total_price = 5;
 }
 
 message CreateOrderResp {
   string full_name = 1;
   string phone_number = 2;
-  float area  = 3;
+  float area = 3;
   float total_price = 4;
   string created_at = 5;
 }
@@ -50,15 +60,6 @@ message GetOrderResp {
 message GetListOrdersResp {
   Client client = 1;
   string status = 2;
-}
-
-service  OrderService {
-  rpc CreateOrder(CreateOrderReq)returns(CreateOrderResp);
-  rpc UpdateOrder(UpdateOrderReq)returns(UpdateOrderResp);
-  rpc DeleteOrder(PrimaryKey)returns(google.protobuf.Empty);
-  rpc GetOrder(PrimaryKey)returns(GetOrderResp);
-  rpc GetAllOrder(GetListRequest)returns(OrdersResponse);
-  rpc 
 }
 
 message Client {
