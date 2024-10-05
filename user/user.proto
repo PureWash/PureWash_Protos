@@ -8,7 +8,7 @@ package user_service;
 
 
 
-message  User {
+message  Client {
   string  id=1;
   string  username=2;
   string  password_hash=3;
@@ -26,10 +26,10 @@ message UsersResponse{
   string message = 2;
 }
 service  UserService {
-  rpc CreateUser(User)returns(UsersResponse);
-  rpc UpdateUser(User)returns(User);
+  rpc CreateUser(Client)returns(UsersResponse);
+  rpc UpdateUser(Client)returns(Client);
   rpc DeleteUser(PrimaryKey)returns(google.protobuf.Empty);
-  rpc GetUser(PrimaryKey)returns(User);
-  rpc GetAllUsers(GetListRequest)returns(User);
+  rpc GetUser(PrimaryKey)returns(Client);
+  rpc GetAllUsers(GetListRequest)returns(Client);
 
 }

@@ -5,33 +5,70 @@ package carpet_wash_service;
 import  "carpet_wash_common.proto";
 import "google/protobuf/empty.proto";
 
-message  Order {
-  string  id=1;
-  string  user_id=2;
-  string  service_id=3;
-  float   area=4;
-  float   total_price=5;
-  string  status=6;
-  string  address_id=7;
-  string  created_at =8;
-}
-message  OrderRequest{
+message  CreateOrderReq{
   string user_id=1;
-  string service_id=2;
-  string address_id=3;
+  Client client = 2;
+  string service_id=3;
   float area=4;
   float total_price=5;
-  string status=6;
 }
-message  OrdersResponse{
-  repeated  Order orders=1;
-  int64  count=2;
-}
-service  OrderService {
-  rpc CreateOrder(OrderRequest)returns(Order);
-  rpc UpdateOrder(Order)returns(Order);
-  rpc DeleteOrder(PrimaryKey)returns(google.protobuf.Empty);
-  rpc GetOrder(PrimaryKey)returns(Order);
-  rpc GetAllOrder(GetListRequest)returns(OrdersResponse);
 
+message CreateOrderResp {
+  string full_name = 1;
+  string phone_number = 2;
+  float area  = 3;
+  float total_price = 4;
+  string created_at = 5;
+}
+
+message UpdateOrderReq {
+  float latitude = 1;
+  float longitude = 2;
+  float area = 3;
+  string status = 4;
+  float total_price = 5;
+}
+
+message UpdateOrderResp {
+  string id = 1;
+  float area = 2;
+  float total_price = 3;
+  string status = 4;
+  string updated_at = 5;
+}
+
+message GetOrderResp {
+  string id = 1;
+  Client client = 2;
+  Service service = 3;
+  float area = 4;
+  float total_price = 5;
+  string status = 6;
+  string created_at = 7;
+}
+
+message GetListOrdersResp {
+  Client client = 1;
+  string status = 2;
+}
+
+service  OrderService {
+  rpc CreateOrder(CreateOrderReq)returns(CreateOrderResp);
+  rpc UpdateOrder(UpdateOrderReq)returns(UpdateOrderResp);
+  rpc DeleteOrder(PrimaryKey)returns(google.protobuf.Empty);
+  rpc GetOrder(PrimaryKey)returns(GetOrderResp);
+  rpc GetAllOrder(GetListRequest)returns(OrdersResponse);
+  rpc 
+}
+
+message Client {
+  string full_name = 1;
+  string phone_number = 2;
+  float latitude = 3;
+  float longitude = 4;
+}
+
+message Service {
+  string name = 1;
+  string tariffs = 2;
 }
