@@ -11,8 +11,8 @@ service OrderService {
   rpc UpdateOrder(UpdateOrderReq) returns (UpdateOrderResp){}
   rpc DeleteOrder(PrimaryKey) returns (google.protobuf.Empty){}
   rpc GetOrder(PrimaryKey) returns (GetOrderResp){}
-  rpc GetAllOrderForCurier(GetListRequest) returns (GetOrdersResp){}
-  rpc GetAllOrder(GetAllOrdersReq) returns (GetOrdersResp){}
+  rpc GetAllOrderForCurier(GetAllOrdersReq) returns (GetOrdersResp){}
+  rpc GetAllOrder(GetListRequest) returns (GetOrdersResp){}
 }
 
 message CreateOrderReq {
@@ -35,9 +35,10 @@ message UpdateOrderReq {
   string id = 1;
   float latitude = 2;
   float longitude = 3;
-  float area = 4;
-  float total_price = 5;
-  string status = 6;
+  string phone_number = 4;
+  float area = 5;
+  float total_price = 6;
+  string status = 7;
 }
 
 message UpdateOrderResp {
