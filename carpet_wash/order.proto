@@ -13,6 +13,8 @@ service OrderService {
   rpc GetOrder(PrimaryKey) returns (GetOrderResp){}
   rpc GetAllOrderForCurier(GetAllOrdersReq) returns (GetOrdersResp){}
   rpc GetAllOrder(GetListRequest) returns (GetOrdersResp){}
+  rpc UpdateOrderStatus(StatusOrderReq)returns(PrimaryKey){}
+
 }
 
 message CreateOrderReq {
@@ -90,4 +92,8 @@ message Client {
 message Services {
   string name = 1;
   string tariffs = 2;
+}
+message  StatusOrderReq{
+  string  id=1;
+  string  status=2;
 }
