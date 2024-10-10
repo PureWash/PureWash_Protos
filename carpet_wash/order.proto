@@ -85,8 +85,9 @@ message Order {
 message Client {
   string full_name = 1;
   string phone_number = 2;
-  float latitude = 3;
-  float longitude = 4;
+  string service_id = 3;
+  float latitude = 4;
+  float longitude = 5;
 }
 
 message Services {
